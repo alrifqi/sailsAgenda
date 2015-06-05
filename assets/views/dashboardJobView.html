@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <section class="panel">
+            <header class="panel-heading"><center>View Job <b>{{ job.name }}</b></center></header>
+            <form class="form-horizontal" role="form" ng-submit="submit(job)">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-lg-4 col-sm-4 control-label" for="jobName">Job Name</label>
+                        <div class="col-lg-8">
+                            <input id="jobName" class="form-control" type="text" placeholder="Job Name..." ng-model="job.name" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 col-sm-4 control-label" for="commandName">Command Name</label>
+                        <div class="col-lg-8">
+                            <input id="commandName" class="form-control" type="text" placeholder="Command Name..." ng-model="job.command.name" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 col-sm-4 control-label" for="executionStatus">Execution Status</label>
+                        <div class="col-lg-8">
+                            <input id="executionStatus" class="form-control" type="text" placeholder="Execution Status..." ng-if="job.status == 1" readonly value="Success">
+                            <input id="executionStatus" class="form-control" type="text" placeholder="Execution Status..." ng-if="job.status == 0" readonly value="Failed">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 col-sm-4 control-label" for="executionTime">Execution Time</label>
+                        <div class="col-lg-8">
+                            <input id="executionTime" class="form-control" type="text" placeholder="Execution Time..." value="{{ job.lastRunAt | date:'dd-MMMM-yyyy H:m:s'}}" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 col-sm-4 control-label" for="nextExecutionTime">Next Execution Time</label>
+                        <div class="col-lg-8">
+                            <input id="nextExecutionTime" class="form-control" type="text" placeholder="Next Execution Time..." value="Once Execution" readonly ng-if="job.nextRunAt == null">
+                            <input id="nextExecutionTime" class="form-control" type="text" placeholder="Next Execution Time..." value="{{ job.nextRunAt | date:'dd-MMMM-yyyy H:m:s'}}" readonly ng-if="job.nextRunAt != null">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 col-sm-4 control-label" for="nextExecutionTime">Script</label>
+                        <div class="col-lg-8">
+                            <textarea class="form-control" rows="5" style="background-color: #666666; color: #66FF66" ng-model="job.fileContent"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 col-sm-4 control-label" for="outputExecution">Output</label>
+                        <div class="col-lg-8">
+                            <table class="table table-hover on-progress-job" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th width="20%">Waktu</th>
+                                        <th width="40%">Output</th>
+                                        <th width="40%">Error Message</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat = "v in job.result" id='{{v._id}}'>
+                                        <td>{{ v.time | date:'dd-MMMM-yyyy H:m:s' }}</td>
+                                        <td>{{ v.outputVal }}</td>
+                                        <td>{{ v.errorVal }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a href="#" class="btn btn-warning">Back</a>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="col-md-2"></div>
+</div>

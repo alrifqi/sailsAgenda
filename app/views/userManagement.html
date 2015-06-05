@@ -1,0 +1,36 @@
+<section class="panel tasks-widget">
+	<header class="panel-heading">User Management<a class="btn btn-primary pull-right btn-sm" href="#addUser">New User</a></header>
+	<div class="panel-body">
+		<div class="task-content">
+			<table class="table table-striped table-hover table-advance" st-table="datas">
+					<thead>
+						<tr>
+							<th>Username</th>
+							<th>Email</th>
+							<th>Created At</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="v in data">
+							<td>{{ v.username }}</td>
+							<td>{{ v.email }}</td>
+							<td>{{ v.createdAt | date:'dd-M-yyyy H:m:s'}}</td>
+							<td>
+								<a href="#userManagement/edit/{{ v.id }}" class="btn btn-xs btn-primary"> Edit </a>
+							</td>
+						</tr>
+					</tbody>
+					
+				</table>
+		</div>
+		<!-- Pagination -->
+		<div class="row">
+			<div class="col-md-12">
+				<pagination ng-model="currentPage" total-items="totalItems" items-per-page="itemsPerPage" ng-change="pageChanged()" class="pull-right"></pagination>
+			</div>
+		</div>
+		<!-- End Pagination -->
+	</div>
+	
+</section>

@@ -1,0 +1,29 @@
+{
+  "name": "bower install angular --save",
+  "version": "*",
+  "description": "Angular JS",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.2.25",
+    "json3": "~3.3.2",
+    "modernizr": "~2.8.3",
+    "angular-bootstrap": "*",
+    "smart-table": "latest",
+    "angular-file-model": "latest",
+    "angular-sails": "latest"
+  }
+}

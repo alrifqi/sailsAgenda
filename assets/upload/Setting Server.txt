@@ -1,0 +1,9 @@
+http://www.binarytides.com/open-http-port-iptables-centos/
+https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-a-centos-6-4-vps
+http://www.howtowebdev.com/centos-5-and-auto-starting-apache-httpd-and-samba/
+https://www.digitalocean.com/community/tutorials/how-to-install-laravel-4-on-a-centos-6-vps
+http://www.cyberciti.biz/tips/how-do-i-enable-remote-access-to-mysql-database-server.html
+http://www.servermom.org/complete-newbie-guide-to-build-centos-server-to-host-websites/
+
+===Kalau DocumentRoot Not Found ====
+https://www.centos.org/forums/viewtopic.php?t=1742#p9988

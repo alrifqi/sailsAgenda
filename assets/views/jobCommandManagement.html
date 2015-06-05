@@ -1,0 +1,28 @@
+<section class="panel tasks-widget">
+	<header class="panel-heading">{{ header }}<a href="#addJobCommand" class="btn btn-sm btn-primary pull-right"> Add New Command </a></header>
+	<div class="panel-body">
+		<div class="task-content">
+			<ul class="task-list ui-sortable">
+				<li ng-repeat="v in data.data" class="list-primary">
+					<div class="task-title">
+						<span class="task-title-sp" style="margin-right: 10px">{{ v.name }}</span>
+						<span class="badge badge-sm label-success">{{ v.createdAt | date:'dd-M-yyyy H:m:s'}}</span>
+						<div class="pull-right hidden-phone" style="margin-right: 15px">
+							<a href="#jobCommand/view/{{ v.id }}" class="btn btn-success btn-xs">Detail</a>
+							<a href="#jobCommand/edit/{{ v.id }}" class="btn btn-primary btn-xs">Edit</a>
+							<button class="btn btn-danger btn-xs" ng-click="delete(v)"><i class="icon-trash"></i></button>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!-- Pagination -->
+		<div class="row">
+			<div class="col-md-12">
+				<pagination ng-model="currentPage" total-items="totalItems" items-per-page="itemsPerPage" ng-change="pageChanged()" class="pull-right"></pagination>
+			</div>
+		</div>
+		<!-- End Pagination -->
+	</div>
+	
+</section>

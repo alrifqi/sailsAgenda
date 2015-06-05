@@ -1,0 +1,137 @@
+<section class="panel">
+    <header class="panel-heading"><center>View Job <b>{{job.name}}</b></center></header>
+<div class="hero-unit">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form role="form" ng-submit="submit(job)" name="jobForm">
+                <div class="">
+                    <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="jobName">Job Name</label>
+                                        <input type="text" class="form-control" id="jobName" name="jobName" placeholder="Job Name..." ng-model="job.name" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="jobCommand">Job Command</label>
+                                        <select class="form-control" name="jobCommand" ng-model="job.command">
+                                            <option ng-repeat="v in jobCommand.data" value="{{ v.id }}" ng-selected="{{ v.id == job.command.id }}">{{ v.name }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="jobPriority">Job Priority</label>
+                                        <select class="form-control" name="jobPriority" id="jobPriority" ng-model="job.priority">
+                                            <option value="highest" ng-selected="job.priority == 20">Highest</option>
+                                            <option value="high" ng-selected="job.priority == 10">High</option>
+                                            <option value="default" ng-selected="job.priority == 0">Default</option>
+                                            <option value="low" ng-selected="job.priority == -10">Low</option>
+                                            <option value="lowest" ng-selected="job.priority == -20">Lowest</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- Start Switch -->
+                                <div class="col-md-12" ng-switch="job.type">
+                                    <div class="form-group" ng-switch-when="normal">
+                                        <label for="jobInterval">Job Interval</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="radios">
+                                                    <label>
+                                                        <input type="radio" name="radioInterval" id="radioInterval" value="satu_kali" checked="checked"> Satu Kali
+                                                    </label>
+                                                </div>      
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="radioInterval" id="radioInterval" value="berulang"  > Berulang
+                                                    </label>
+                                                </div>      
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Switch -->
+                                    <div class="form-group" ng-switch-when="single">
+                                        <label for="jobInterval">Job Interval</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="radios">
+                                                    <label>
+                                                        <input type="radio" name="radioInterval" id="radioInterval" value="satu_kali"> Satu Kali
+                                                    </label>
+                                                </div>      
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="radioInterval" id="radioInterval" value="berulang"  checked="checked"> Berulang
+                                                    </label>
+                                                </div>      
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Switch -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="jobTime">Waktu</label>
+                                        <timepicker ng-model="job.lastRunAt" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="job.type == 'single'">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="jobPeriode">Job Priode</label>
+                                        <select class="form-control" name="jobPriode" id="jobPriode" ng-model="job.priode">
+                                            <option value="minutes" ng-selected="job.repeatInterval == 'minutes'">Per Menit</option>
+                                            <option value="hours" ng-selected="job.repeatInterval == 'hours'">Per Jam</option>
+                                            <option value="days" ng-selected="job.repeatInterval == 'days'">Harian</option>
+                                            <option value="weeks" ng-selected="job.repeatInterval == 'weeks'">Mingguan</option>
+                                            <option value="months" ng-selected="job.repeatInterval == 'months'">Bulanan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="job.type == 'single'">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="job.startDate">Start Time</label>
+                                        <div class="input-group" style="margin-top: 14px">
+                                            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="job.lastRunAt" is-open="opened" min-data="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"  close-text="Close" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-primary" ng-click="open($event)"><i class="icon-calendar"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <timepicker ng-model="job.startTime" hour-step="hstep" minute-step="mstep"  show-meridian="ismeridian"></timepicker>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    </div>
+                    <div class="panel-footer">
+                        <a href="#agendaManagement" class="btn btn-primary">Back</a>
+                    </div>  
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    
+</div>
+</section>

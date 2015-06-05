@@ -1,0 +1,126 @@
+<div class="row state-overview">
+	<div class="col-lg-4 col-sm-6">
+        <a href="#agendaManagement">
+		<section class="panel">
+			<div class="symbol terques"><i class="icon-terminal"></i></div>
+    			<div class="value">
+    				<h1 class="count count-job">{{ job }}</h1>
+    				<p>Job</p>
+    			</div>
+		</section>
+        </a>
+	</div>
+	<div class="col-lg-4 col-sm-6">
+		<a href="#jobCommand">
+        <section class="panel">
+			<div class="symbol blue"><i class="icon-code"></i></div>
+            	<div class="value">
+    				<h1 class="count count-command">{{ totalCommand }}</h1>
+    				<p>Job Command</p>
+    			</div>
+		</section>
+        </a>
+	</div>
+	<div class="col-lg-4 col-sm-6">
+        <a href="#userManagement">
+		<section class="panel">
+			<div class="symbol red"><i class="icon-user"></i></div>
+    			<div class="value">
+    				<h1 class="count count-user">{{ totalUser }}</h1>
+    				<p>User</p>
+    			</div>
+		</section>
+        </a>
+	</div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4 col-sm-4">
+        <section class="panel">
+            <div class="revenue-head">
+                <span>
+                    <i class="icon-bar-chart"></i>
+                </span>
+                <h3>Waiting Job</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover waiting-job" width="100%">
+                    <tr ng-repeat = "c in waitingagenda" id="{{ c._id }}">
+                        <td width="50%">{{c.name}}</td>
+                        <td width="40%">{{c.nextRunAt | date:'dd-MMMM-yyyy H:m:s'}}</td>
+                        <td width="10%"><span class="badge badge-sm label-success ng-binding">Next</span>
+                            <a href="#dashboard/jobView/{{ c.id }}" class="btn btn-primary btn-xs" style="margin-top: 5px">Detail</a>
+                        </td> 
+                    </tr>
+                </table>
+                <pagination ng-model="currentPage" total-items="waitingagenda[0].total" items-per-page="10" ng-change="pageChangedWaitingJob()" class="pull-right"></pagination>
+            </div>
+        </section>
+    </div>
+
+    <div class="col-lg-4 col-sm-4">
+        <section class="panel">
+            <div class="revenue-head">
+                <span>
+                    <i class="icon-bar-chart"></i>
+                </span>
+                <h3>On Progress Job</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover on-progress-job" width="100%">
+                    <tr ng-repeat = "v in progress" id='{{v._id}}'>
+                        <td width="50%">{{v.name}}</td>
+                        <td width="40%">{{v.lastRunAt | date:'dd-MMMM-yyyy H:m:s'}}</td>
+                        <td width="10%"><img src="img/loader.gif" alt=""></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- <div class="col-lg-4 col-sm-4">
+        <section class="panel">
+            <div class="revenue-head">
+                <span>
+                    <i class="icon-bar-chart"></i>
+                </span>
+                <h3>Completed Job</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover completed-job" width="100%">
+                    <tr ng-repeat = "c in completed" id="{{ c._id }}">
+                        <td width="50%">{{c.name}}</td>
+                        <td width="40%">{{c.lastFinishedAt | date:'dd-MMMM-yyyy H:m:s'}}</td>
+                        <td width="10%"><span class="badge badge-sm label-success ng-binding">Success</span></td> 
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </div> -->
+    <div class="col-lg-4 col-sm-4">
+        <section class="panel">
+            <div class="revenue-head">
+                <span>
+                    <i class="icon-bar-chart"></i>
+                </span>
+                <h3>Last Executed Job</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover failed-job" width="100%">
+                    <tr ng-repeat = "f in allagenda" id="{{ f._id }}">
+                        <td width="50%">{{f.name}}</td>
+                        <td width="40%">{{f.lastFinishedAt | date:'dd-MMMM-yyyy H:m:s'}}</td>
+                        <td width="10%">
+                            <span class="badge badge-sm label-danger ng-binding" ng-if="f.status == 0">Failed</span>
+                            <span class="badge badge-sm label-success ng-binding" ng-if="f.status == 1">Success</span>
+                            <a href="#dashboard/jobView/{{ f.id }}" class="btn btn-primary btn-xs" style="margin-top: 5px">Detail</a>
+                        </td> 
+                    </tr>
+                </table>
+                <pagination ng-model="currentPage" total-items="allagenda[0].total" items-per-page="10" ng-change="pageChanged()" class="pull-right"></pagination>
+            </div>
+            
+        </section>
+    </div>
+
+</div>

@@ -1,0 +1,89 @@
+<section id="container">
+    <!-- 
+    ============= Header =============
+    -->
+    <header class="header white-bg">
+      <div class="sidebar-toggle-box">
+        <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
+      </div>
+      
+      <a href="#" class="logo">Job <span>Scheduler</span></a>
+
+      
+      <div class="top-nav">
+        <ul class="nav pull-right top-menu">
+          <!-- <li>
+            <input type="text" class="form-control search" placeholder="Search..">
+          </li> -->
+          <li>
+          </li>
+          <li class="dropdown badge-profil">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle job-contact">
+              <img src="img/avatar-mini2.jpg" alt="">
+              <span class="username">Job</span>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu extended logout">
+              <div class="log-arrow-up"></div>
+              <li><a href="/logout"><i class="icon-key"></i>Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <!--
+    ============= End Header =========
+    -->
+    
+    <!--
+    ============ Sidebar =============
+    -->
+    <aside>
+      <div id="sidebar" class="nav-collapse">
+        <ul class="sidebar-menu" id="nav-accordion">
+          <li>
+            <a href="/#" class="active">
+              <i class="icon-dashboard"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#userManagement">
+              <i class="icon-user"></i>
+              <span>User Management</span>
+            </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="icon-laptop"></i>
+              <span>Job</span>
+            </a>
+            <ul class="sub">
+              <li><a href="#jobCommand">Job Command</a></li>
+              <li><a href="#agendaManagement">Job Schedule</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    <!--
+    =========== End Sidebar ==========
+    -->
+
+    <!--
+    ============ Content =============
+    -->
+
+    <section id="main-content">
+      
+      <section class="wrapper">
+        <div ng-view>
+          
+        </div>
+        
+      </section>
+    </section>
+    <!--
+    =========== End Content ==========
+    -->
+  </section>
